@@ -12,7 +12,12 @@ next_btn.addEventListener('click', () =>{
     if(counter > steps.length){
         counter = steps.length;
     };
-
+    
+    if(counter > 4){
+        next_btn.disabled = true;
+    }else{
+        next_btn.disabled = false;
+    }
     update();
    
 });
@@ -23,6 +28,14 @@ prev_btn.addEventListener('click', () =>{
     if(counter < 1){
         counter = 1;
     };
+
+    console.log(counter);
+
+    if(counter < 1){
+        prev_btn.disabled = true;
+    }else{
+        prev_btn.disabled = false;
+    }
 
     update();
 });
@@ -39,13 +52,21 @@ function update(){
 
    const active = document.querySelectorAll('.active');
 
-   console.log((active.length  / steps.length - 0.5) * 100);
+//    console.log((active.length  / steps.length - 0.5) * 100);
 
-//    const width = 
+
 
    progress.style.width = ((active.length -1) / (steps.length - 1)) * 100 + "%";
 //    console.log(active.length);
 //    console.log(steps.length);
+if(counter === 1){
+    prev_btn.disabled = true;
+}else if (counter === 4){
+    next_btn.disabled = true;
+}else{
+    next_btn.disabled = false;
+    prev_btn.disabled = false;
+}
  });
 }
 
